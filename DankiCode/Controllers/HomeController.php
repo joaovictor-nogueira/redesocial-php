@@ -6,7 +6,13 @@
 
         public function index(){
 
-            echo 'estou na home!';
+            if(isset($_SESSION['login'])){
+                /* Renderiza a home do usuário */
+                \DankiCode\Views\MainView::render('home');
+            }else{
+                /* Renderizar para criar conta */
+                \DankiCode\Views\MainView::render('login');
+            }
 
         }
     }
