@@ -11,8 +11,10 @@
                     $idPara = (int) $_GET['solicitarAmizade'];
                     if(\DankiCode\Models\UsuariosModel::solicitarAmizade($idPara)){
                         \DankiCode\Utilidades::alerta('Amizade Solicitada com Sucesso!');
+                        \DankiCode\Utilidades::redirect(INCLUDE_PATH.'comunidade');
                     }else{
                         \DankiCode\Utilidades::alerta('Ocorreu um erro ao solicitar amizade...');
+                        \DankiCode\Utilidades::redirect(INCLUDE_PATH.'comunidade');
                     }
                 }
 

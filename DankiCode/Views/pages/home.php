@@ -117,27 +117,22 @@
 
 			<div class="friends-request-feed">
 				<h4>Solicitações de amizade</h4>
+
+				<?php 
+					foreach(\DankiCode\Models\UsuariosModel::listarAmizadesPendentes() as $key=>$value){
+						$usuarioInfo = \DankiCode\Models\UsuariosModel::getUsuarioById($value['enviou']);
+
+				?>
+
 				<div class="friend-request-single">
 					<img src="<?php echo INCLUDE_PATH_STATIC ?>images/avatar.jpg" />
 					<div class="friend-request-single-info">
-						<h3>Otávio da Silva</h3>
-						<p><a href="">Aceitar</a> | <a href="">Recusar</a></p>
+						<h3><?php echo $usuarioInfo['nome'] ?></h3>
+						<p><a href="<?php echo INCLUDE_PATH ?>?aceitarAmizade=<?php echo $usuarioInfo['id']; ?>">Aceitar</a> | <a href="<?php echo INCLUDE_PATH ?>?recusarAmizade=<?php echo $usuarioInfo['id']; ?>">Recusar</a></p>
 					</div>
 				</div>
-				<div class="friend-request-single">
-					<img src="<?php echo INCLUDE_PATH_STATIC ?>images/avatar.jpg" />
-					<div class="friend-request-single-info">
-						<h3>Otávio da Silva</h3>
-						<p><a href="">Aceitar</a> | <a href="">Recusar</a></p>
-					</div>
-				</div>
-				<div class="friend-request-single">
-					<img src="<?php echo INCLUDE_PATH_STATIC ?>images/avatar.jpg" />
-					<div class="friend-request-single-info">
-						<h3>Otávio da Silva</h3>
-						<p><a href="">Aceitar</a> | <a href="">Recusar</a></p>
-					</div>
-				</div>
+
+				<?php } ?>
 			</div>
 		</div><!--feed-->
 	</section>
