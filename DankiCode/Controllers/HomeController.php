@@ -37,6 +37,20 @@
 					
 				}
 
+				/* EXISTE POSTAGEM NO FEED? */
+
+				if(isset($_POST['post_feed'])){
+
+					if($_POST['post_content'] == '' ){
+						\DankiCode\Utilidades::alerta('Não permitimos post vázios :(');
+						\DankiCode\Utilidades::redirect(INCLUDE_PATH);
+					}
+
+					\DankiCode\Models\HomeModel::postFeed($_POST['post_content']);
+					\DankiCode\Utilidades::alerta('Post feito com sucesso!');
+					\DankiCode\Utilidades::redirect(INCLUDE_PATH);
+				}
+
 				\DankiCode\Views\MainView::render('home');
 			}else{
 				//Renderizar para criar conta.
